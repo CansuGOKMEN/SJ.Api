@@ -18,23 +18,15 @@ namespace SJ.Api.UI.Controllers
     {
         private ApiClient apiClient;
         private IInsuranceRepository insuranceRepository;
-        private IResultRepository resultRepository;
         public HomeController(ApiClient apiClient, IInsuranceRepository insuranceRepository, IResultRepository resultRepository)
         {
             this.apiClient = apiClient;
             this.insuranceRepository = insuranceRepository;
-            this.resultRepository = resultRepository;
         }
 
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index()
         {
-            if (id.HasValue)
-            {
-                Insurance insurance = insuranceRepository.Get(id.Value);
-                return await Task.Run(() => View(insurance));
-            }
-            else
-                return await Task.Run(() => View());
+            return await Task.Run(() => View());
         }
 
 
@@ -53,12 +45,12 @@ namespace SJ.Api.UI.Controllers
 
             insurance.Result = response.data;
             bool isUpdated = insuranceRepository.Update(insurance);
-            if(!isUpdated) throw new Exception("Something wrong!");
+            if (!isUpdated) throw new Exception("Something wrong!");
 
             ApiResultViewModel resultModel = JsonConvert.DeserializeObject<ApiResultViewModel>(response.data);
-            var model = resultModel.Results.GroupBy(x => x.Status.Value).ToList();
+            var model = resultModel.Results.GroupBy(x => x.Status.Value).ToDictionary(x => x.Key, x => x.ToList());
 
-            return await Task.Run(() => View(resultModel.Results));
+            return await Task.Run(() => View(model));
         }
 
         public IActionResult Privacy()

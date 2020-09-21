@@ -1,4 +1,4 @@
-﻿@model List<Result>
+﻿@model Dictionary<string, List<Result>>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -34,27 +34,6 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <h3>Documentation</h3>
-                <hr>
-                <p>
-                    You can pass plugin options using data-options attribute. Please make sure to use valid
-                    json
-                    code.
-                </p>
-                <a href="https://alex-d.github.io/Trumbowyg/documentation/" target="_blank"
-                   class="btn btn-xs btn-primary">Plugin Docs</a>
-                <a href="https://jsonformatter.org/" target="_blank"
-                   class="btn btn-outline-primary btn-xs">
-                    JSON
-                    Formatter
-                </a>
-                <h4 class="mt-5">Code Example</h4>
-                <hr>
-                <pre><code>&lt;textarea
-&nbsp;&nbsp;&nbsp;class="form-control editor"
-&nbsp;&nbsp;&nbsp;placeholder="Write Something..."
-&nbsp;&nbsp;&nbsp;data-options='{"btns":[["bold","italic"],["link"]]}'&gt;
-&lt;/textarea&gt;</code></pre>
 
             </div>
         </div>
@@ -62,43 +41,101 @@
 </div>
 @if (Model != null)
 {
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="card no-b">
             <div class="card-body">
                 <div class="card-title">Results</div>
-                <table id="table" data-toggle="table" class="table table-bordered table-hover data-tables" >
-                    <thead>
-                        <tr>
-                            <th colspan="2">Olumlu</th>
-                            <th colspan="2">Bilgi</th>
-                            <th colspan="2">Olumsuz</th>
-
-                        </tr>
-                        <tr>
-                            <th data-field="name">Kod</th>
-                            <th data-field="description">Açıklama</th>
-
-                            <th data-field="name">Kod</th>
-                            <th data-field="description">Açıklama</th>
-
-                            <th data-field="name">Kod</th>
-                            <th data-field="description">Açıklama</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+                <div class="col-md-4">
+                    <table id="table" data-toggle="table" class="table table-bordered table-hover">
+                        <thead>
                             <tr>
-                                <td data-title="bootstrap table">
-                                    @item.Code
-                                </td>
-                                <td data-i18n="Description">
-                                    @item.Description
-                                </td>
+                                <th data-align="center"  colspan="2">Olumlu</th>
+
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                            <tr>
+                                <th>Kod</th>
+                                <th>Açıklama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.ContainsKey("1"))
+                            {
+                                @foreach (var item in Model["1"])
+                                {
+                                    <tr>
+                                        <td data-title="bootstrap table">
+                                            @item.Code
+                                        </td>
+                                        <td data-i18n="Description">
+                                            @item.Description
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <table id="table" data-toggle="table" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th data-align="center" colspan="2">Bilgi</th>
+
+                            </tr>
+                            <tr>
+                                <th>Kod</th>
+                                <th>Açıklama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @if (Model.ContainsKey("2"))
+                            {
+                                @foreach (var item in Model["2"])
+                                {
+                                    <tr>
+                                        <td data-title="bootstrap table">
+                                            @item.Code
+                                        </td>
+                                        <td data-i18n="Description">
+                                            @item.Description
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <table id="table" data-toggle="table" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th data-align="center" colspan="2">Olumsuz</th>
+                            </tr>
+                            <tr>
+                                <th>Kod</th>
+                                <th>Açıklama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @if (Model.ContainsKey("3"))
+                            {
+                                @foreach (var item in Model["3"])
+                                {
+                                    <tr>
+                                        <td data-title="bootstrap table">
+                                            @item.Code
+                                        </td>
+                                        <td data-i18n="Description">
+                                            @item.Description
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
         </div>
