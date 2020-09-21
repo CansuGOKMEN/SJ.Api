@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SJ.Api.Core", "SJ.Api.Core\SJ.Api.Core.csproj", "{97023CA1-A420-46A1-8E0D-F48270D72A0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SJ.Api.UI", "SJ.Api.UI\SJ.Api.UI.csproj", "{74FCF69D-8D2E-40E2-A848-F657AE76445B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97023CA1-A420-46A1-8E0D-F48270D72A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97023CA1-A420-46A1-8E0D-F48270D72A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97023CA1-A420-46A1-8E0D-F48270D72A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97023CA1-A420-46A1-8E0D-F48270D72A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74FCF69D-8D2E-40E2-A848-F657AE76445B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FCF69D-8D2E-40E2-A848-F657AE76445B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74FCF69D-8D2E-40E2-A848-F657AE76445B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74FCF69D-8D2E-40E2-A848-F657AE76445B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2FB1811-3AA9-4B5E-913E-A5B183CA886F}
+	EndGlobalSection
+EndGlobal

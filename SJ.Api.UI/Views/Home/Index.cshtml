@@ -1,0 +1,112 @@
+﻿@model List<Result>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="animatedParent animateOnce">
+    <div class="container-fluid my-3">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body b-b">
+                        <form id="getAll" method="post">
+                            @Html.AntiForgeryToken()
+                            <div class="form-group col-md-6">
+                                <label for="productNo" class="col-form-label">Ürün No </label>
+                                <input type="text" name="ProductNo" class="form-control" id="productNo" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="proposalNo" class="col-form-label">Teklif No</label>
+                                <input type="text" name="ProposalNo" class="form-control" id="proposalNo" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="renewalNo" class="col-form-label">Yenileme No</label>
+                                <input type="text" name="RenewalNo" class="form-control" id="renewalNo" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="endorsNo" class="col-form-label">Zeyil No</label>
+                                <input type="text" name="EndorsNo" class="form-control" id="endorsNo" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sorgula</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h3>Documentation</h3>
+                <hr>
+                <p>
+                    You can pass plugin options using data-options attribute. Please make sure to use valid
+                    json
+                    code.
+                </p>
+                <a href="https://alex-d.github.io/Trumbowyg/documentation/" target="_blank"
+                   class="btn btn-xs btn-primary">Plugin Docs</a>
+                <a href="https://jsonformatter.org/" target="_blank"
+                   class="btn btn-outline-primary btn-xs">
+                    JSON
+                    Formatter
+                </a>
+                <h4 class="mt-5">Code Example</h4>
+                <hr>
+                <pre><code>&lt;textarea
+&nbsp;&nbsp;&nbsp;class="form-control editor"
+&nbsp;&nbsp;&nbsp;placeholder="Write Something..."
+&nbsp;&nbsp;&nbsp;data-options='{"btns":[["bold","italic"],["link"]]}'&gt;
+&lt;/textarea&gt;</code></pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model != null)
+{
+    <div class="col-md-8">
+        <div class="card no-b">
+            <div class="card-body">
+                <div class="card-title">Results</div>
+                <table id="table" data-toggle="table" class="table table-bordered table-hover data-tables" >
+                    <thead>
+                        <tr>
+                            <th colspan="2">Olumlu</th>
+                            <th colspan="2">Bilgi</th>
+                            <th colspan="2">Olumsuz</th>
+
+                        </tr>
+                        <tr>
+                            <th data-field="name">Kod</th>
+                            <th data-field="description">Açıklama</th>
+
+                            <th data-field="name">Kod</th>
+                            <th data-field="description">Açıklama</th>
+
+                            <th data-field="name">Kod</th>
+                            <th data-field="description">Açıklama</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td data-title="bootstrap table">
+                                    @item.Code
+                                </td>
+                                <td data-i18n="Description">
+                                    @item.Description
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    <script>
+        $('#table').bootstrapTable({});
+    </script>
+}
